@@ -1,3 +1,4 @@
+using Curso.Repositories;
 using Usuario.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 //Adding Repositories
-builder.Services.AddSingleton<IInMemItemsRepository,InMemItemsRepository>();
+builder.Services.AddSingleton<IUsuarioDataStructure,UsuarioDataStructure>();
+builder.Services.AddSingleton<ICursoDataStructure,CursoDataStructure>();
 
 
 var app = builder.Build();

@@ -1,6 +1,5 @@
-namespace Usuario.Entities{
-
-    public record UsuarioItem{
+namespace Usuario.Dtos{
+    public record UsuarioItemDto{
         public String? cui { get; init; }
         public String? nombres { get; init; }
 	    public String? apellidos { get; init; }

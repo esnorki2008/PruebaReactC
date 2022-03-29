@@ -7,9 +7,9 @@ namespace Usuario.Controllers{
     [ApiController]
     [Route("usuario")]
     public class UsuarioItemController: ControllerBase{
-        private readonly IInMemItemsRepository repository;
+        private readonly IUsuarioDataStructure repository;
 
-        public UsuarioItemController(IInMemItemsRepository repository){
+        public UsuarioItemController(IUsuarioDataStructure repository){
             this.repository = repository;
         }
 
@@ -31,17 +31,18 @@ namespace Usuario.Controllers{
 
         [HttpPost]
         public ActionResult<UsuarioItemDto> CreateUsuario(CreateUsuarioDto usuarioDto){
-            UsuarioItem newUserio = new(){
-                Cui = usuarioDto.Cui,
-                Nombre = usuarioDto.Nombre,
-                Apellido = usuarioDto.Apellido,
-                Edad = usuarioDto.Edad
-            };
-
-            repository.CreateItem(newUserio);
-
-            return CreatedAtAction(nameof(GetUsuario),new { cui = newUserio.Cui}, newUserio.AsDto());
-
+            var existingUsuario = repository.GetUsuario(usuarioDto.cui);
+            if(existingUsuario is null){
+                UsuarioItem newUserio = new(){
+                    cui = usuarioDto.cui,
+                    nombres = usuarioDto.nombres,
+                    apellidos = usuarioDto.apellidos,
+                    edad = usuarioDto.edad
+                };
+                repository.CreateUsuario(newUserio);
+                return CreatedAtAction(nameof(GetUsuario),new { cui = newUserio.cui}, newUserio.AsDto());
+            }
+            return Conflict();
         }
 
         [HttpPut("{cui}")]
@@ -52,12 +53,12 @@ namespace Usuario.Controllers{
             }
 
             UsuarioItem updatedUsuario = existingUsuario with{
-                Nombre = usuarioDto.Nombre,
-                Apellido = usuarioDto.Apellido,
-                Edad = usuarioDto.Edad
+                nombres = usuarioDto.nombres,
+                apellidos = usuarioDto.apellidos,
+                edad = usuarioDto.edad
             };
 
-            repository.UpdateItem(updatedUsuario);
+            repository.UpdateUsuario(updatedUsuario);
 
             return NoContent();
         }
@@ -69,7 +70,7 @@ namespace Usuario.Controllers{
             if(existingUsuario is null){
                 return NotFound();
             }
-            repository.DeleteItem(cui);
+            repository.DeleteUsuario(cui);
             return NoContent();
         }
     }

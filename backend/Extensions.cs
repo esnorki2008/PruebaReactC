@@ -1,3 +1,5 @@
+using Curso.Dtos;
+using Curso.Entities;
 using Usuario.Dtos;
 using Usuario.Entities;
 
@@ -5,11 +7,26 @@ namespace Usuario{
     public static class Extensions{
         public static UsuarioItemDto AsDto(this UsuarioItem item){
             return  new UsuarioItemDto{
-                Cui = item.Cui,
-                Nombre = item.Nombre,
-                Apellido = item.Apellido,
-                Edad = item.Edad
+                cui = item.cui,
+                nombres = item.nombres,
+                apellidos = item.apellidos,
+                edad = item.edad
             };
         }
+
+        
+    }
+}
+
+namespace Curso {
+    public static class Extensions{
+        public static CursoItemDto AsDto(this CursoItem item){
+            return  new CursoItemDto{
+                codigo = item.codigo,
+                nombres = item.nombres,
+                descripcion = item.descripcion
+            };
+        }
+
     }
 }

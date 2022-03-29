@@ -9,18 +9,18 @@ namespace Usuario.Dtos{
 
         [Required]
 
-        public String? Nombre { get; init; }
+        public String? nombres { get; init; }
 
 
 
         [Required]
 
-	    public String? Apellido { get; init; }
+	    public String? apellidos { get; init; }
 
 
         [Required]
         [Range(0,Int16.MaxValue)]
 
-	    public Int16 Edad { get; init; }
+	    public Int16 edad { get; init; }
     }
 }
