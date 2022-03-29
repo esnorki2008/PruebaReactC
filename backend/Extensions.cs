@@ -1,3 +1,5 @@
+using Asignacion.Dtos;
+using Asignacion.Entities;
 using Curso.Dtos;
 using Curso.Entities;
 using Usuario.Dtos;
@@ -23,8 +25,25 @@ namespace Curso {
         public static CursoItemDto AsDto(this CursoItem item){
             return  new CursoItemDto{
                 codigo = item.codigo,
-                nombres = item.nombres,
+                nombres = item.nombre,
                 descripcion = item.descripcion
+            };
+        }
+
+    }
+}
+
+namespace Asignacion {
+    public static class Extensions{
+        public static AsignacionItemDto AsDto(this AsignacionItem item,CursoItem curso,UsuarioItem usuario){
+            return  new AsignacionItemDto{
+                codigoAsignacion  = item.codigoAsignacion ,
+                
+                nombres = usuario.nombres,
+                apellidos = usuario.apellidos,
+                
+                curso = curso.nombre,
+                descripcion = curso.descripcion,
             };
         }
 

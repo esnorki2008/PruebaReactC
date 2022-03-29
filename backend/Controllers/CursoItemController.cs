@@ -33,13 +33,13 @@ namespace Curso.Controllers{
         public ActionResult<CursoItemDto> CreateCurso(CreateCursoDto cursoDto){
             var existingCurso = repository.GetCurso(cursoDto.codigo);
             if(existingCurso is null){
-                CursoItem newUserio = new(){
+                CursoItem newCurso = new(){
                     codigo = cursoDto.codigo,
-                    nombres = cursoDto.nombres,
+                    nombre = cursoDto.nombres,
                     descripcion = cursoDto.descripcion,
                 };
-                repository.CreateCurso(newUserio);
-                return CreatedAtAction(nameof(GetCurso),new { codigo = newUserio.codigo}, newUserio.AsDto());
+                repository.CreateCurso(newCurso);
+                return CreatedAtAction(nameof(GetCurso),new { codigo = newCurso.codigo}, newCurso.AsDto());
             }
             return Conflict();
         }
@@ -52,7 +52,7 @@ namespace Curso.Controllers{
             }
 
             CursoItem updatedCurso = existingCurso with{
-                nombres = cursoDto.nombres,
+                nombre = cursoDto.nombres,
                 descripcion = cursoDto.descripcion,
             };
 

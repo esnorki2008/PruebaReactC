@@ -15,8 +15,7 @@ namespace Curso.Dtos{
 
 
         [Required]
-        [Range(0,Int16.MaxValue)]
 
-	    public Int16 descripcion { get; init; }
+	    public String descripcion { get; init; }  = default!;
     }
 }

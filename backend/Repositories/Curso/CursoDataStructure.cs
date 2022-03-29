@@ -7,9 +7,9 @@ namespace Curso.Repositories{
     {
         private List<CursoItem> items = new()
         {
-            new CursoItem { codigo = "lib1", nombres = "lib1 nombres", descripcion = 21 },
-            new CursoItem { codigo = "lib2", nombres = "lib2 nombres", descripcion = 22 },
-            new CursoItem { codigo = "lib3", nombres = "lib3 nombres", descripcion = 23 }
+            new CursoItem { codigo = "lib1", nombre = "lib1 nombres", descripcion = "21" },
+            new CursoItem { codigo = "lib2", nombre = "lib2 nombres", descripcion = "22" },
+            new CursoItem { codigo = "lib3", nombre = "lib3 nombres", descripcion = "23" }
         };
 
         public IEnumerable<CursoItem> GetUsusarios()

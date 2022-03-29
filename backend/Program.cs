@@ -1,3 +1,4 @@
+using Asignacion.Repositories;
 using Curso.Repositories;
 using Usuario.Repositories;
 
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 //Adding Repositories
 builder.Services.AddSingleton<IUsuarioDataStructure,UsuarioDataStructure>();
 builder.Services.AddSingleton<ICursoDataStructure,CursoDataStructure>();
+builder.Services.AddSingleton<IAsignacionDataStructure,AsignacionDataStructure>();
 
 
 var app = builder.Build();
