@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "fa48251d-0d37-4aa5-81af-dd99ca93cfa3",
+		"name": "PruebaTecnica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"cui\" : \"154998\",\r\n        \"nombres\" : \"Mario Primero\",\r\n        \"apellidos\" : \"Lopez Garrido\",\r\n        \"edad\" : 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:7166/usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombres\" : \"Nombre Segundo\",\r\n        \"apellidos\" : \"Lopez Garrido\",\r\n        \"edad\" : 52\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:7166/usuario/154998"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://localhost:7166/usuario/154998"
+					},
+					"response": []
+				},
+				{
+					"name": "Read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://localhost:7166/usuario"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cursos",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"codigo\" : \"mat214\",\r\n\t\"nombre\" : \"Matematica estandar\",\r\n\t\"descripcion\" : \"descripcion de texto\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:7166/curso"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombre\" : \"matematica avanzado\",\r\n        \"descripcion\" : \"curso actualizado\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:7166/curso/mat214"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://localhost:7166/curso/mat214"
+					},
+					"response": []
+				},
+				{
+					"name": "Read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://localhost:7166/curso"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Asignacion",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\" : \"154998\",\r\n\t\"curso\" : \"mat214\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:7166/asignacion"
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"usuario\" : \"154998\",\r\n        \"curso\" : \"1\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "https://localhost:7166/asignacion/634eb9e8-e137-455e-8041-3ca03f23fac7"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "https://localhost:7166/asignacion/634eb9e8-e137-455e-8041-3ca03f23fac7"
+					},
+					"response": []
+				},
+				{
+					"name": "Read",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://localhost:7166/curso"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
