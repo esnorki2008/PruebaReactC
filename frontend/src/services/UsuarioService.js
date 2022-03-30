@@ -1,5 +1,7 @@
 import axios from "axios";
 import ENVIRONMENT from "../environment";
+
+
 export default {
   getAll: () => {
     return new Promise((resolve, reject) => {
@@ -31,6 +33,19 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .delete(`${ENVIRONMENT.URL}/usuario/${idToDelete}`)
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch(() => {
+          reject([]);
+        });
+    });
+  },
+
+  update: (idToUpdate,newContent) => {
+    return new Promise((resolve, reject) => {
+      axios
+        .put(`${ENVIRONMENT.URL}/usuario/${idToUpdate}`,newContent)
         .then((res) => {
           resolve(res.data);
         })

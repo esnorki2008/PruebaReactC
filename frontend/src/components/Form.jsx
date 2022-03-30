@@ -6,8 +6,8 @@ import "./Form.css";
 class Form extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = { value: new Array( props.formData.length ).fill("") };
+    if(props.values) this.state = { value: props.values };
+    else this.state = { value: new Array( props.formData.length ).fill("") };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -24,13 +24,13 @@ class Form extends React.Component {
   handleSubmit() {
     let oldState = this.state.value
     this.props.handleFormClick(oldState);
-    this.setState({ value: new Array( this.props.formData.length ).fill("")  });
+    if(!this.props.values)this.setState({ value: new Array( this.props.formData.length ).fill("")  });
   }
 
   render() {
     return (
       <div className="card text-center Form">
-        <div className="card-header">Formulario Usuarios</div>
+        <div className="card-header">{this.props.title}</div>
         <div className="card-body">
           {this.props.formData.map((item, i) => {
             return (
@@ -52,7 +52,7 @@ class Form extends React.Component {
             onClick={this.handleSubmit}
             className="btn btn-outline-secondary"
           >
-            Crear Nuevo Registro
+            {this.props.buttonText}
           </button>
         </div>
       </div>

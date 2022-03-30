@@ -1,4 +1,5 @@
 .tablescroll{
+    max-height: 60vh;
     overflow-y: auto;
 }
 
@@ -6,5 +7,5 @@
     text-transform: capitalize;
 }
 
-.table-responsive{height:400px;overflow:scroll;} 
-thead tr:nth-child(1) th{background: white; position: sticky;top: 0;z-index: 10;}
+.table-responsive{overflow:hidden;} 
+thead tr:nth-child(1) th{background: white; position: sticky;top: 0;}
