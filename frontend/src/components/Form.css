@@ -1,0 +1,9 @@
+.Form{
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+   margin-bottom: 1rem;
+}
+
+.Form-input{
+   text-align: start;
+   margin-bottom: 1rem;
+}
