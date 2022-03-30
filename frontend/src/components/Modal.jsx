@@ -26,8 +26,9 @@ export default function Modal(props) {
               </div>
               <div className="col-sm-6">
                 <Form
-                  values={props.values.slice(1)}
-                  handleFormClick={(valor)=>{ props.onEdit([props.values[0],...valor])}}
+                  resetDataOnSubmit={false}
+                  values={props.values.length>1?props.values.slice(1):null}
+                  handleFormClick={(valor)=>{  props.onEdit([props.values[0],...valor]); }}
                   formData={props.formData}
                   title={props.formTitle}
                   buttonText={props.formButtonText}

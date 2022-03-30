@@ -1,6 +1,5 @@
 import React from "react";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 //Components
 import Form from "../components/Form";
 import Table from "../components/Table";
@@ -168,6 +167,7 @@ class Usuario extends React.Component {
         <div className="row">
           <div className="col-sm-3 ">
             <Form
+              resetDataOnSubmit={true}
               handleFormClick={this.onFormClick}
               formData={this.usuarioForm}
               title="Formulario Usuarios"

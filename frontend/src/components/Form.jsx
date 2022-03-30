@@ -15,7 +15,7 @@ class Form extends React.Component {
   handleChange(event, indexInput) {
     this.setState({
       value: this.state.value.map((value, index) => {
-        if (index != indexInput) return value;
+        if (index !== indexInput) return value;
         return event.target.value ;
       }),
     });
@@ -24,7 +24,7 @@ class Form extends React.Component {
   handleSubmit() {
     let oldState = this.state.value
     this.props.handleFormClick(oldState);
-    if(!this.props.values)this.setState({ value: new Array( this.props.formData.length ).fill("")  });
+    if(this.props.resetDataOnSubmit)this.setState({ value: new Array( this.props.formData.length ).fill("")  });
   }
 
   render() {

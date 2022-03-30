@@ -7,9 +7,9 @@ namespace Usuario.Repositories{
     {
         private List<UsuarioItem> items = new()
         {
-            new UsuarioItem { cui = "A1", nombres = "B", apellidos = "C", edad = 21 },
-            new UsuarioItem { cui = "A2", nombres = "B2", apellidos = "C2", edad = 22 },
-            new UsuarioItem { cui = "A3", nombres = "B3", apellidos = "C3", edad = 23 }
+            new UsuarioItem { cui = "1", nombres = "Luis Mario ", apellidos = "Perez Garcia", edad = 21 },
+            new UsuarioItem { cui = "2", nombres = "Jose Ricardo", apellidos = "Marquez Garrido", edad = 22 },
+            new UsuarioItem { cui = "3", nombres = "Guillermo Alexander", apellidos = "Ruiz Gonzales", edad = 23 }
         };
 
         public IEnumerable<UsuarioItem> GetUsusarios()

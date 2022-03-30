@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Appbar from "../components/Appbar";
 import Usuario from "../views/Usuario";
 import Curso from "../views/Curso";
+import Asignacion from "../views/Asignacion";
 //Import Style
 import "./Home.css";
 function Home() {
@@ -38,9 +39,15 @@ function Home() {
         </svg>
       </div>
       <div className="Home">
-         {
-          activeView == "usuarios" ?<Usuario /> : activeView == "cursos" ? <Curso/>: <div/>
-         }
+        {activeView === "usuarios" ? (
+          <Usuario />
+        ) : activeView === "cursos" ? (
+          <Curso />
+        ) : activeView === "asignaciones" ? (
+          <Asignacion/>
+        ) : (
+          <div />
+        )}
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ namespace Curso {
         public static CursoItemDto AsDto(this CursoItem item){
             return  new CursoItemDto{
                 codigo = item.codigo,
-                nombres = item.nombre,
+                nombre = item.nombre,
                 descripcion = item.descripcion
             };
         }

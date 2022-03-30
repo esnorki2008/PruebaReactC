@@ -4,35 +4,31 @@ import Swal from "sweetalert2";
 import Form from "../components/Form";
 import Table from "../components/Table";
 //Style
-import "./Curso.css";
+import "./Asignacion.css";
 // Services
-import CursoService from "../services/CursoService";
+import AsignacionService from "../services/AsignacionService";
 import Modal from "../components/Modal";
 
-class Curso extends React.Component {
+class Asignacion extends React.Component {
   constructor(props) {
     super(props);
     this.state = { retrievedRecords: [], recordEdit: null };
 
     this.onFormClick = this.onFormClick.bind(this);
-    this.CursoForm = this.createNewForms();
+    this.asignacionForm = this.createNewForms();
 
-    this.tableHeader = ["codigo", "nombre", "descripcion"];
+    this.tableHeader = ["codigoAsignacion", "nombres", "apellidos", "curso","descripcion"];
   }
 
   createNewForms() {
     return [
       {
-        inputTitle: "Codigo del curso",
-        inputPlaceholder: "Ingrese Codigo",
+        inputTitle: "CUI Usuario",
+        inputPlaceholder: "Ingrese el CUI del usuario",
       },
       {
-        inputTitle: "Nombre del curso",
-        inputPlaceholder: "Ingrese nombre",
-      },
-      {
-        inputTitle: "Descripcion del curso",
-        inputPlaceholder: "Ingrese descripcion",
+        inputTitle: "Codigo Curso",
+        inputPlaceholder: "Ingrese Codigo Curso",
       }
     ];
   }
@@ -42,7 +38,7 @@ class Curso extends React.Component {
   }
 
   fetchNewData() {
-    CursoService.getAll()
+    AsignacionService.getAll()
       .then((res) => {
         let mappedRecords = this.mapRetrievedRecords(res, this.tableHeader);
         this.setState({ ...this.state, retrievedRecords: mappedRecords });
@@ -67,10 +63,9 @@ class Curso extends React.Component {
   }
 
   onFormClick = (formListValue) => {
-    CursoService.create({
-      codigo: formListValue[0],
-      nombre: formListValue[1],
-      descripcion: formListValue[2],
+    AsignacionService.create({
+      usuario: formListValue[0],
+      curso: formListValue[1],
     })
       .then(() => {
         this.okMessage("El registro ha sido guardado");
@@ -92,7 +87,7 @@ class Curso extends React.Component {
       confirmButtonText: "Sí, Eliminar!",
     }).then((result) => {
       if (result.isConfirmed) {
-        CursoService.delete(idToDelete)
+        AsignacionService.delete(idToDelete)
           .then(() => {
             this.okMessage("El registro ha sido eliminado");
             this.fetchNewData();
@@ -139,9 +134,9 @@ class Curso extends React.Component {
       confirmButtonText: "Sí, Actualizar!",
     }).then((result) => {
       if (result.isConfirmed) {
-        CursoService.update(newContent[0], {
-          nombre: newContent[1],
-          descripcion: newContent[2],
+        AsignacionService.update(newContent[0], {
+          usuario: newContent[1],
+          curso: newContent[2],
         })
           .then(() => {
             this.okMessage("El registro ha sido actualizado");
@@ -163,14 +158,14 @@ class Curso extends React.Component {
             <Form
               resetDataOnSubmit={true}
               handleFormClick={this.onFormClick}
-              formData={this.CursoForm}
-              title="Formulario Cursos"
+              formData={this.asignacionForm}
+              title="Formulario Asignacions"
               buttonText="Crear Nuevo Registro"
             />
           </div>
           <div className="col-sm-9">
             <Table
-              title="Cursos"
+              title="Asignacions"
               onEdit={(itemToUpdate) => {
                 this.setState({ ...this.state, recordEdit: itemToUpdate });
               }}
@@ -182,7 +177,7 @@ class Curso extends React.Component {
             />
           </div>
         </div>
-        <div className="Curso-modal">
+        <div className="Asignacion-modal">
           {this.state.recordEdit ? (
             <Modal
               onCancel={() => {
@@ -191,12 +186,12 @@ class Curso extends React.Component {
               onEdit={(newContent) => {
                 this.onModalEdit(newContent);
               }}
-              values={this.state.recordEdit}
-              title="Editar Campos Curso"
-              subtitle="CUI Del Curso:"
-              formTitle="Edicion Curso"
-              formButtonText="EditarCurso"
-              formData={this.CursoForm.slice(1)}
+              values={[this.state.recordEdit[0]]}
+              title="Editar Campos Asignacion"
+              subtitle="ID Del Asignacion:"
+              formTitle="Edicion Asignacion"
+              formButtonText="EditarAsignacion"
+              formData={this.asignacionForm}
             />
           ) : (
             <div />
@@ -207,4 +202,4 @@ class Curso extends React.Component {
   }
 }
 
-export default Curso;
+export default Asignacion;

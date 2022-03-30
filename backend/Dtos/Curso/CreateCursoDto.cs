@@ -11,7 +11,7 @@ namespace Curso.Dtos{
 
         [Required]
 
-        public String nombres { get; init; } = default!;
+        public String nombre { get; init; } = default!;
 
 
         [Required]
