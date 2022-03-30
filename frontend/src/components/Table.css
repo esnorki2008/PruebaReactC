@@ -2,3 +2,7 @@
     max-height: 60vh;
     overflow-y: auto;
 }
+
+.Table-header{
+    text-transform: capitalize;
+}

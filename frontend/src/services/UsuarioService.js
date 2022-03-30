@@ -1,9 +1,10 @@
 import axios from "axios";
+import ENVIRONMENT from "../environment";
 export default {
-  getAll: ()=> {
+  getAll: () => {
     return new Promise((resolve, reject) => {
       axios
-        .get(`https://localhost:7166/usuario`)
+        .get(`${ENVIRONMENT.URL}/usuario`)
         .then((res) => {
           resolve(res.data);
         })
@@ -11,5 +12,18 @@ export default {
           reject([]);
         });
     });
-  }
+  },
+
+  create: (newUsuario) => {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(`${ENVIRONMENT.URL}/usuario`,newUsuario)
+        .then((res) => {
+          resolve(res.data);
+        })
+        .catch(() => {
+          reject([]);
+        });
+    });
+  },
 };

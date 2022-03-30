@@ -13,7 +13,7 @@ export default function Table(props) {
               <tr>
                 {props.tableHeader ? (
                   props.tableHeader.map((header, index) => (
-                    <th key={index} scope="col">
+                    <th key={index} className="Table-header" scope="col">
                       {header}
                     </th>
                   ))

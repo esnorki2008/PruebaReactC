@@ -4,9 +4,9 @@ export default function TableBody(props) {
     <tr key={value.cui}>
       {value.map((field, index) => {
         return index !== 0 ? (
-          <td key={field}>{field}</td>
+          <td key={index}>{field}</td>
         ) : (
-          <th key={field} scope="row">{field}</th>
+          <th key={index} scope="row">{field}</th>
         );
       })}
     </tr>

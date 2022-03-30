@@ -23,6 +23,16 @@ class Usuario extends React.Component {
         inputPlaceholder: "Ingrese Nombres",
         inputValue: "",
       },
+      {
+        inputTitle: "Apellidos Completos",
+        inputPlaceholder: "Ingrese Apellido",
+        inputValue: "",
+      },
+      {
+        inputTitle: "Edad Actual",
+        inputPlaceholder: "Ingrese Edad",
+        inputValue: "",
+      }
     ];
     
   }
@@ -53,7 +63,16 @@ class Usuario extends React.Component {
 
 
   onFormClick = (formListValue) => {
-    console.log({ misnuevos: formListValue });
+    UsuarioService.create({
+      cui:formListValue[0].inputValue,
+      nombres:formListValue[1].inputValue,
+      apellidos:formListValue[2].inputValue,
+      edad:formListValue[3].inputValue
+    }).then(response=>{
+      console.log("creado")
+    }).catch(()=>{
+      console.log("error al crear")
+    })
   };
 
   render() {
