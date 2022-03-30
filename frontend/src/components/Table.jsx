@@ -6,7 +6,7 @@ import TableBody from "./TableBody";
 export default function Table(props) {
   return (
     <div className="card text-center  Table">
-      <div className="card-header"> Resultados Para Usuarios</div>
+      <div className="card-header"> Resultados Para {props.title}</div>
       <div className="card-body table-responsive">
         <div className=" tablescroll">
           <table className="table table-hover ">

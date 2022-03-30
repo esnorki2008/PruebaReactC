@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 //Components
 import Appbar from "../components/Appbar";
 import Usuario from "../views/Usuario";
+import Curso from "../views/Curso";
 //Import Style
 import "./Home.css";
 function Home() {
@@ -38,7 +39,7 @@ function Home() {
       </div>
       <div className="Home">
          {
-          activeView == "usuarios" ?<Usuario /> : <div/>
+          activeView == "usuarios" ?<Usuario /> : activeView == "cursos" ? <Curso/>: <div/>
          }
       </div>
     </div>

@@ -5,40 +5,36 @@ import withReactContent from "sweetalert2-react-content";
 import Form from "../components/Form";
 import Table from "../components/Table";
 //Style
-import "./Usuario.css";
+import "./Curso.css";
 // Services
-import UsuarioService from "../services/UsuarioService";
+import CursoService from "../services/CursoService";
 import Modal from "../components/Modal";
 
-class Usuario extends React.Component {
+class Curso extends React.Component {
   constructor(props) {
     super(props);
     this.state = { retrievedRecords: [], recordEdit: null };
 
     this.onFormClick = this.onFormClick.bind(this);
-    this.usuarioForm = this.createNewForms();
+    this.CursoForm = this.createNewForms();
 
-    this.tableHeader = ["cui", "nombres", "apellidos", "edad"];
+    this.tableHeader = ["codigo", "nombre", "descripcion"];
   }
 
   createNewForms() {
     return [
       {
-        inputTitle: "CUI",
-        inputPlaceholder: "Ingrese CUI",
+        inputTitle: "Codigo del curso",
+        inputPlaceholder: "Ingrese Codigo",
       },
       {
-        inputTitle: "Nombres Completos",
-        inputPlaceholder: "Ingrese Nombres",
+        inputTitle: "Nombre del curso",
+        inputPlaceholder: "Ingrese nombre",
       },
       {
-        inputTitle: "Apellidos Completos",
-        inputPlaceholder: "Ingrese Apellido",
-      },
-      {
-        inputTitle: "Edad Actual",
-        inputPlaceholder: "Ingrese Edad",
-      },
+        inputTitle: "Descripcion del curso",
+        inputPlaceholder: "Ingrese descripcion",
+      }
     ];
   }
 
@@ -47,7 +43,7 @@ class Usuario extends React.Component {
   }
 
   fetchNewData() {
-    UsuarioService.getAll()
+    CursoService.getAll()
       .then((res) => {
         let mappedRecords = this.mapRetrievedRecords(res, this.tableHeader);
         this.setState({ ...this.state, retrievedRecords: mappedRecords });
@@ -72,11 +68,10 @@ class Usuario extends React.Component {
   }
 
   onFormClick = (formListValue) => {
-    UsuarioService.create({
-      cui: formListValue[0],
-      nombres: formListValue[1],
-      apellidos: formListValue[2],
-      edad: formListValue[3],
+    CursoService.create({
+      codigo: formListValue[0],
+      nombre: formListValue[1],
+      descripcion: formListValue[2],
     })
       .then(() => {
         this.okMessage("El registro ha sido guardado");
@@ -98,7 +93,7 @@ class Usuario extends React.Component {
       confirmButtonText: "Sí, Eliminar!",
     }).then((result) => {
       if (result.isConfirmed) {
-        UsuarioService.delete(idToDelete)
+        CursoService.delete(idToDelete)
           .then(() => {
             this.okMessage("El registro ha sido eliminado");
             this.fetchNewData();
@@ -145,10 +140,9 @@ class Usuario extends React.Component {
       confirmButtonText: "Sí, Actualizar!",
     }).then((result) => {
       if (result.isConfirmed) {
-        UsuarioService.update(newContent[0], {
-          nombres: newContent[1],
-          apellidos: newContent[2],
-          edad: newContent[3],
+        CursoService.update(newContent[0], {
+          nombre: newContent[1],
+          descripcion: newContent[2],
         })
           .then(() => {
             this.okMessage("El registro ha sido actualizado");
@@ -169,14 +163,14 @@ class Usuario extends React.Component {
           <div className="col-sm-3 ">
             <Form
               handleFormClick={this.onFormClick}
-              formData={this.usuarioForm}
-              title="Formulario Usuarios"
+              formData={this.CursoForm}
+              title="Formulario Cursos"
               buttonText="Crear Nuevo Registro"
             />
           </div>
           <div className="col-sm-9">
             <Table
-              title="Usuarios"
+              title="Cursos"
               onEdit={(itemToUpdate) => {
                 this.setState({ ...this.state, recordEdit: itemToUpdate });
               }}
@@ -188,7 +182,7 @@ class Usuario extends React.Component {
             />
           </div>
         </div>
-        <div className="Usuario-modal">
+        <div className="Curso-modal">
           {this.state.recordEdit ? (
             <Modal
               onCancel={() => {
@@ -198,11 +192,11 @@ class Usuario extends React.Component {
                 this.onModalEdit(newContent);
               }}
               values={this.state.recordEdit}
-              title="Editar Campos Usuario"
-              subtitle="CUI Del Usuario:"
-              formTitle="Edicion Usuario"
-              formButtonText="EditarUsuario"
-              formData={this.usuarioForm.slice(1)}
+              title="Editar Campos Curso"
+              subtitle="CUI Del Curso:"
+              formTitle="Edicion Curso"
+              formButtonText="EditarCurso"
+              formData={this.CursoForm.slice(1)}
             />
           ) : (
             <div />
@@ -213,4 +207,4 @@ class Usuario extends React.Component {
   }
 }
 
-export default Usuario;
+export default Curso;
