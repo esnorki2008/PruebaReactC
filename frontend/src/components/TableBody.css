@@ -1,0 +1,7 @@
+.tableBody-button{
+    cursor: pointer;
+    user-select: none;
+}
+.tableBody-button:hover{
+    opacity: 0.5;
+}
