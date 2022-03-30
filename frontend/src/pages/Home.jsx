@@ -1,13 +1,18 @@
-import Form from "../components/Form";
+import React, { useEffect, useState } from "react";
+//Components
 import Appbar from "../components/Appbar";
-import Table from "../components/Table";
+import Usuario from "../views/Usuario";
 //Import Style
 import "./Home.css";
 function Home() {
+  const [activeView, setActiveView] = useState("usuarios");
+  let onSelectedView = (value) => {
+    setActiveView(value);
+  };
+
   return (
     <div>
-      <Appbar></Appbar>
-
+      <Appbar selectedView={onSelectedView}></Appbar>
       <div className="Home-background">
         <svg
           data-name="Layer 1"
@@ -32,14 +37,9 @@ function Home() {
         </svg>
       </div>
       <div className="Home">
-        <div className="row">
-          <div className="col-sm-3 ">
-            <Form/>
-          </div>
-          <div className="col-sm-9">
-            <Table/>
-          </div>
-        </div>
+         {
+          activeView == "usuarios" ?<Usuario /> : <div/>
+         }
       </div>
     </div>
   );
