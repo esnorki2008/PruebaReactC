@@ -35,7 +35,7 @@ namespace Curso.Controllers{
             if(existingCurso is null){
                 CursoItem newCurso = new(){
                     codigo = cursoDto.codigo,
-                    nombre = cursoDto.nombres,
+                    nombre = cursoDto.nombre,
                     descripcion = cursoDto.descripcion,
                 };
                 repository.CreateCurso(newCurso);
@@ -52,7 +52,7 @@ namespace Curso.Controllers{
             }
 
             CursoItem updatedCurso = existingCurso with{
-                nombre = cursoDto.nombres,
+                nombre = cursoDto.nombre,
                 descripcion = cursoDto.descripcion,
             };
 

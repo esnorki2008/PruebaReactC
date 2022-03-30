@@ -1,0 +1,27 @@
+.Home-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.Home-background svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 72px;
+    transform: rotateY(180deg);
+}
+
+.Home-background .shape-fill {
+    fill: #004468;
+}
+
+.Home{
+    margin-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 2rem;
+}

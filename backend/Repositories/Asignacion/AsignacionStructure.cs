@@ -7,9 +7,15 @@ namespace Asignacion.Repositories{
     {
         private List<AsignacionItem> items = new()
         {
-            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "A1", curso = "lib1" },
-            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "A2", curso = "lib2" },
-            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "A3", curso = "lib3" }
+            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "1", curso = "1" },
+            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "1", curso = "2" },
+            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "1", curso = "3" },
+            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "2", curso = "1" },
+            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "2", curso = "2" },
+            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "2", curso = "3" },
+            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "3", curso = "1" },
+            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "3", curso = "2" },
+            new AsignacionItem { codigoAsignacion = Guid.NewGuid(), usuario = "3", curso = "3" }
         };
 
         public IEnumerable<AsignacionItem> GetAsignaciones()

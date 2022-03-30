@@ -1,0 +1,11 @@
+.tablescroll{
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+.Table-header{
+    text-transform: capitalize;
+}
+
+.table-responsive{overflow:hidden;} 
+thead tr:nth-child(1) th{background: white; position: sticky;top: 0;}

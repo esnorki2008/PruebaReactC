@@ -8,7 +8,7 @@ namespace Curso.Dtos{
 
         [Required]
 
-	    public String? nombres { get; init; }
+	    public String? nombre { get; init; }
 
 
         [Required]
